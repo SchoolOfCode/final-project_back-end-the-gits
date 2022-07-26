@@ -1,12 +1,12 @@
 // const mongoose = require("mongoose"); 
 import Shopping from '../models/shoppingSchema.js';
 import mongoose from 'mongoose';
-import res from 'express/lib/response';
+// import res from 'express/lib/response';
 
 //finds ALL shopping lists and sorts it in order of most recent list.
 export const getShoppingList = async (req, res) => {
-await Shopping.find().sort({createdAt: -1})
-res.status(200).json(shoppingList)
+    const shoppingList = await Shopping.find().sort({createdAt: -1})
+    res.status(200).json(shoppingList)
 }
 //the if statement checks to see if id is valid and if not returns error message. 
 export const getShoppingListItem = async (req, res) => {
@@ -32,9 +32,9 @@ export const createShoppingListItem = async (req, res) => {
     //add doc to DB
     try{
         const shoppingItem = await Shopping.create({username, item, shoppingListName, completed})
-        return res.status(200).json(shoppingItem)
+        res.status(200).json(shoppingItem)
     } catch (error) {
-        return res.status(404).json({error: error.message})
+        res.status(404).json({error: error.message})
     }
  }
 
@@ -63,26 +63,4 @@ export const deleteShoppingListItem = async (req, res) => {
         return res.status(404).json({error: 'list item not found'})
     }
     return res.status(200).json(shoppingListItem)
-
-
-
-
-    /*
-get shopping list function - DONE
-get shopping list item  - DONE
-create shopping list item - DONE
-update shopping list item
-delete shopping list item
-*/
-
-
-// Shopping.findById() 
-// OR Shopping.findOne({ _id: <id> })
-
-// Shopping.findByIdAndDelete()
-// isValid 
-
-// Shopping.deleteOne(query)
-// .then((shopping) => console.log("Deleted"))
-
-// mongoose.connect(env)
+}
