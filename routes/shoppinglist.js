@@ -16,7 +16,7 @@ router.get('/', getShoppingList)
 router.get('/:id', getShoppingListItem)
 
 // Adds a new item to the shopping list
-router.post('/:id', createShoppingListItem)
+router.post('/', createShoppingListItem)
 
 // Amend list item
 router.patch('/:id/item/:item_id', updateShoppingListItem)
