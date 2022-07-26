@@ -19,5 +19,14 @@ router.get('/:id', (req, res) => {
   });
 })
 
+// Adds a new item to the shopping list
+router.post('/:id', (req, res) => {
+  const { id } = req.params;
+  const { item } = req.body;
+  res.json({
+    success: true,
+    payload: `New item with body: ${item} added to list: ${id}`
+  });
+})
 
 export default router;
