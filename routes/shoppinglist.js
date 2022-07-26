@@ -1,28 +1,28 @@
 import express from 'express';
 import {
-  getShoppinglist,
-  getShoppinglistItem,
-  createShoppinglistItem,
-  updateShoppinglistItem,
-  deleteShoppinglistItem
-} from '../controllers/shoppinglistController.js'
+  getShoppingList,
+  getShoppingListItem,
+  createShoppingListItem,
+  updateShoppingListItem,
+  deleteShoppingListItem
+} from '../controllers/shoppingController.js'
 
 const router = express.Router();
 
 // Retrieves all the shopping lists
-router.get('/', getShoppinglist)
+router.get('/', getShoppingList)
 
 // Retrieves all the items for a shopping by its id
-router.get('/:id', getShoppinglistItem)
+router.get('/:id', getShoppingListItem)
 
 // Adds a new item to the shopping list
-router.post('/:id', createShoppinglistItem)
+router.post('/:id', createShoppingListItem)
 
 // Amend list item
-router.patch('/:id/item/:item_id', updateShoppinglistItem)
+router.patch('/:id/item/:item_id', updateShoppingListItem)
 
 // Delete list item
-router.delete('/:id/item/:item_id', deleteShoppinglistItem)
+router.delete('/:id/item/:item_id', deleteShoppingListItem)
 
 
 export default router;
