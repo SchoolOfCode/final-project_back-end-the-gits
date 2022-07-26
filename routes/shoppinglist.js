@@ -11,5 +11,13 @@ router.get('/', (req, res) => {
   });
 })
 
+// Retrieves all the items for a shopping by its id
+router.get('/:id', (req, res) => {
+  res.json({
+    success: true,
+    payload: 'This returns a shopping list'
+  });
+})
+
 
 export default router;
