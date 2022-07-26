@@ -12,7 +12,7 @@ const shoppingSchema = new Schema({
     type: String
   },
   shoppingListName: {
-    type: String.fromCharCode,
+    type: String,
     required: true
   },
   completed: {
