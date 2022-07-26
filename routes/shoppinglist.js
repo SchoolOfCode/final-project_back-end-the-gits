@@ -29,4 +29,14 @@ router.post('/:id', (req, res) => {
   });
 })
 
+// Amend list item
+router.patch('/:id/item/:item_id', (req, res) => {
+  const { id, item_id } = req.params;
+  const { created_by } = req.body;
+  res.json({
+    success: true,
+    payload: `New item with body: ${created_by} added to list: ${id} for item id: ${item_id}`
+  });
+})
+
 export default router;
