@@ -21,7 +21,7 @@ router.post('/:id', createShoppinglistItem)
 // Amend list item
 router.patch('/:id/item/:item_id', updateShoppinglistItem)
 
-// Amend list item
+// Delete list item
 router.delete('/:id/item/:item_id', deleteShoppinglistItem)
 
 
