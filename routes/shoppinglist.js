@@ -9,20 +9,20 @@ import {
 
 const router = express.Router();
 
-// Retrieves all the shopping lists
+// DEVELOPMENT ONLY - Retrieves all the shopping items from database (useful to check data)
 router.get('/', getShoppingList)
 
-// Retrieves all the items for a shopping by its id
-router.get('/:id', getShoppingListItem)
+// Retrieves all the items for a shopping list by its user created name (i.e. Lidl)
+router.get('/:shopName', getShoppingListItem)
 
-// Adds a new item to the shopping list
+// Adds a new item to the shopping list (needs to be linked by id)
 router.post('/', createShoppingListItem)
 
-// Amend list item
-router.patch('/:id/item/:item_id', updateShoppingListItem)
+// Amend list item (i.e. to cohange completed from False to True)
+router.patch('/', updateShoppingListItem)
 
 // Delete list item
-router.delete('/:id/item/:item_id', deleteShoppingListItem)
+router.delete('/', deleteShoppingListItem)
 
 
 export default router;
