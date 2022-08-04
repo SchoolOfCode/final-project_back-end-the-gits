@@ -1,7 +1,7 @@
 import server from "../server.js";
 import mongoose from "mongoose"
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3002
 
 mongoose.connect(process.env.MONG_DB)
   .then(() => {

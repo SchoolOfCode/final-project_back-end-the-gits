@@ -4,7 +4,8 @@ import {
   getShoppingListItem,
   createShoppingListItem,
   updateShoppingListItem,
-  deleteShoppingListItem
+  deleteShoppingListItem,
+  deleteShopNameItem
 } from '../controllers/shoppingController.js'
 
 const router = express.Router();
@@ -23,6 +24,10 @@ router.patch('/', updateShoppingListItem)
 
 // Delete list item
 router.delete('/', deleteShoppingListItem)
+
+// Delete ShopName 
+
+router.delete('/remove-shop', deleteShopNameItem )
 
 
 export default router;

@@ -73,3 +73,17 @@ export const deleteShoppingListItem = async (req, res) => {
     }
     return res.status(200).json(shoppingListItem)
 }
+
+//DELETE / Deletes shopname from database.
+
+export const deleteShopNameItem = async (req, res) => {
+    const {shopName} = req.body
+
+    const shoppingListName = await Shopping.deleteMany({shoppingListName: shopName})
+
+    if(!shoppingListName.acknowledged){
+        return res.status(404).json({error: 'Shop Name is not found'})
+    }
+    return res.status(200).json(shoppingListName)
+
+}
