@@ -18,6 +18,10 @@ const shoppingSchema = new Schema({
   completed: {
     type: Boolean
   },
+  sub: {
+    type: String,
+    required: true
+  }
   
 }, { timestamps: true} )
 
