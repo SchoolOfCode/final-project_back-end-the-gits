@@ -14,7 +14,7 @@ const router = express.Router();
 router.get('/', getShoppingList)
 
 // Retrieves all the items for a shopping list by its user created name (i.e. Lidl)
-router.get('/:shopName', getShoppingListItem)
+router.get('/:id', getShoppingListItem)
 
 // Adds a new item to the shopping list (needs to be linked by id)
 router.post('/', createShoppingListItem)

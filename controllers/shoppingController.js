@@ -4,17 +4,15 @@ import mongoose from 'mongoose';
 
 // GET / Finds ALL shopping list ITEMS and sorts it in order of most recent list. (DEV ONLY)
 export const getShoppingList = async (req, res) => {
-    const {sub} = req.body;
-    const shoppingList = await Shopping.find({sub: sub}).sort({createdAt: -1})
+    const shoppingList = await Shopping.find().sort({createdAt: -1})
     res.status(200).json(shoppingList)
 }
 
 // GET / Finds a shopping list by name (i.e. Lidl).
 export const getShoppingListItem = async (req, res) => {
     // req.params is part of the url request.
-    const {shopName} = req.params
-    const {sub} = req.body;
-    const shoppingList = await Shopping.find({shoppingListName: shopName, sub: sub})
+    const {shopName, id} = req.params
+    const shoppingList = await Shopping.find({shoppingListName: shopName, sub: id})
 
     // Mongodb will create a new empty array if given a new shopName.
     // This IF statement will catch an empty array and return an error.
