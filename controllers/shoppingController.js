@@ -4,7 +4,8 @@ import mongoose from 'mongoose';
 
 // GET / Finds ALL shopping list ITEMS and sorts it in order of most recent list. (DEV ONLY)
 export const getShoppingList = async (req, res) => {
-    const shoppingList = await Shopping.find().sort({createdAt: -1})
+    const {sub} = req.body;
+    const shoppingList = await Shopping.find({sub: sub}).sort({createdAt: -1})
     res.status(200).json(shoppingList)
 }
 
@@ -12,7 +13,8 @@ export const getShoppingList = async (req, res) => {
 export const getShoppingListItem = async (req, res) => {
     // req.params is part of the url request.
     const {shopName} = req.params
-    const shoppingList = await Shopping.find({shoppingListName: shopName})
+    const {sub} = req.body;
+    const shoppingList = await Shopping.find({shoppingListName: shopName, sub: sub})
 
     // Mongodb will create a new empty array if given a new shopName.
     // This IF statement will catch an empty array and return an error.
@@ -24,7 +26,7 @@ export const getShoppingListItem = async (req, res) => {
 
 // POST / Creates a new item document in the database with required "key:value" pairs (i.e. username, item).
 export const createShoppingListItem = async (req, res) => {
-    const {username, item, shoppingListName, completed} = req.body
+    const {username, item, shoppingListName, completed, sub} = req.body
     let emptyFields = []
     // IF statement to catch an empty item string - to avoid null data in the database.
     if (!item) {
@@ -35,7 +37,7 @@ export const createShoppingListItem = async (req, res) => {
     }
     //add doc to DB
     try{
-        const shoppingItem = await Shopping.create({username, item, shoppingListName, completed})
+        const shoppingItem = await Shopping.create({username, item, shoppingListName, completed, sub})
         res.status(200).json(shoppingItem)
     } catch (error) {
         res.status(404).json({error: error.message})
