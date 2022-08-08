@@ -11,8 +11,8 @@ export const getShoppingList = async (req, res) => {
 // GET / Finds a shopping list by name (i.e. Lidl).
 export const getShoppingListItem = async (req, res) => {
     // req.params is part of the url request.
-    const {shopName, id} = req.params
-    const shoppingList = await Shopping.find({shoppingListName: shopName, sub: id})
+    const {id} = req.params
+    const shoppingList = await Shopping.find({sub: id})
 
     // Mongodb will create a new empty array if given a new shopName.
     // This IF statement will catch an empty array and return an error.
