@@ -1,9 +1,9 @@
 import express from 'express';
 import {
   getChores,
-  createChore,
-  updateChore,
-  deleteChore,
+  createChores,
+  updateChores,
+  deleteChores,
 } from '../controllers/choresController.js'
 
 const router = express.Router();
@@ -12,13 +12,13 @@ const router = express.Router();
 router.get('/:id', getChores)
 
 // Adds a new item to the shopping list (needs to be linked by id)
-router.post('/', createChore)
+router.post('/', createChores)
 
 // Amend list item (i.e. to cohange completed from False to True)
-router.patch('/', updateChore)
+router.patch('/', updateChores)
 
 // Delete list item
-router.delete('/', deleteChore)
+router.delete('/', deleteChores)
 
 
 export default router;
