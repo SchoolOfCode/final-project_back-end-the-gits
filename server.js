@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import logger from "morgan"
 import shoppingListRouter from "./routes/shoppinglist.js"
+import choresRouter from "./routes/chores.js"
 // import {expressjwt} from "express-jwt";
 // import JwksRsa from "jwks-rsa";
 
@@ -29,6 +30,7 @@ server.use(logger("dev"))
 server.use(express.json())
 
 server.use("/api/v1/shopping-list", shoppingListRouter)
+server.use("/api/v1/chores", choresRouter)
 
 
 export default server
