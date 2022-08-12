@@ -39,10 +39,6 @@ A REST api availabe for our front-end using no-sql Mongo Database with document 
 
 ```
 
-
-
-## features
-
 ### authors
 
 - [@Alistair McGill](https://github.com/AliMcG)
