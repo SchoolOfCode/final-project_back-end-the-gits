@@ -1,9 +1,11 @@
 import Shopping from '../models/shoppingSchema.js';
+//imports schema model which is in an object that we can call mongodb/mongoose functions on.   
 import mongoose from 'mongoose';
 
 
 // GET / Finds ALL shopping list ITEMS and sorts it in order of most recent list. (DEV ONLY)
 export const getShoppingList = async (req, res) => {
+    //.find returns everything in the Shopping object/document. (.sort() returns this list sorted in chronological order)
     const shoppingList = await Shopping.find().sort({createdAt: -1})
     res.status(200).json(shoppingList)
 }
@@ -78,7 +80,7 @@ export const deleteShoppingListItem = async (req, res) => {
 
 export const deleteShopNameItem = async (req, res) => {
     const {shopName} = req.body
-
+    //.deletemany allows you to delete multiple docs with specific shopname
     const shoppingListName = await Shopping.deleteMany({shoppingListName: shopName})
 
     if(!shoppingListName.acknowledged){

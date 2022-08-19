@@ -3,34 +3,26 @@ import cors from "cors"
 import logger from "morgan"
 import shoppingListRouter from "./routes/shoppinglist.js"
 import choresRouter from "./routes/chores.js"
-// import {expressjwt} from "express-jwt";
-// import JwksRsa from "jwks-rsa";
 
-
+// Creates a server using the express() package
 const server = express();
 
-// const checkJwt = expressjwt({
-//     secret: JwksRsa.expressJwtSecret({
-//       cache: true,
-//       rateLimit: true,
-//       jwksRequestsPerMinute: 5,
-//       jwksUri: `https://${process.env.AUTH0_API_DOMAIN}.us.auth0.com/.well-known/jwks.json`
-//     }),
-  
-//     audience: process.env.AUTH0_API_IDENTIFIER,
-//     issuer: [`https://${process.env.AUTH0_API_DOMAIN}.us.auth0.com/`],
-//     algorithms: ['RS256']
-//   });
-
-
-// server.use(checkJwt)
-
+// Middleware: 
+// Cors() Allows the front-end to talk to the back-end.
+// Allows cross-origin resourse sharing
 server.use(cors())
+
+// Morgan() provides helpful run-time messages in the terminal.
 server.use(logger("dev"))
+
+// .json() allows the back-end to read and write json objects.
 server.use(express.json())
 
+// Path into the shopping list data route.
 server.use("/api/v1/shopping-list", shoppingListRouter)
+
+// Path into the chores data route.
 server.use("/api/v1/chores", choresRouter)
 
-
+// server exported to ./bin/www.js to avoid PORT conflict when using Jest Tests (with SuperTest).
 export default server
