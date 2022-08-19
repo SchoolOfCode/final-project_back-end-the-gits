@@ -21,6 +21,10 @@ const shoppingSchema = new Schema({
   sub: {
     type: String,
     required: true
+  },
+  id: {
+    type: Number,
+    required: true
   }
   
 }, { timestamps: true} )
